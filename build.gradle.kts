@@ -1,6 +1,10 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("multiplatform") version "1.7.10"
-    id("maven-publish")
+    id("convention.publication")
+    //id("maven-publish")
+    //id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
 group = "pt.isel"
@@ -36,7 +40,6 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -52,3 +55,5 @@ kotlin {
         val nativeTest by getting
     }
 }
+
+//apply(from= "${rootDir}/scripts/publish-root.gradle")
